@@ -36,7 +36,7 @@ self.addEventListener("install", (event) => {
       } catch (error) {
         console.error("[Service Worker] Failed to cache:", error);
       }
-    })()
+    })(),
   );
 });
 
@@ -51,10 +51,10 @@ self.addEventListener("fetch", (event) => {
       const response = await fetch(event.request);
       const cache = await caches.open(cacheName);
       console.log(
-        `[Service Worker] Caching new resource: ${event.request.url}`
+        `[Service Worker] Caching new resource: ${event.request.url}`,
       );
       cache.put(event.request, response.clone());
       return response;
-    })()
+    })(),
   );
 });

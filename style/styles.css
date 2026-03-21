@@ -19,7 +19,29 @@ button:active {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
   background-color: #346151;
+}
+@supports (height: 100dvh) {
+  body {
+    height: 100dvh;
+  }
+}
+
+body.short-content {
+  display: block;
+  height: auto;
+  overflow: visible;
+}
+body.short-content #content {
+  overflow-y: visible;
+  flex: none;
+}
+body.short-content footer {
+  position: static;
 }
 
 header {
@@ -29,13 +51,18 @@ header {
   background-color: #243a6f;
 }
 
+header,
+footer {
+  flex-shrink: 0;
+}
+
 #title {
   margin: 10px;
   font-size: 1rem;
   color: #fff;
 }
 
-@media screen and (min-height: 800px) and (min-width: 430px) {
+@media screen and (min-height: 800px) and (min-width: 465px) {
   #title {
     font-size: 2rem;
   }
@@ -82,9 +109,11 @@ header {
 }
 
 #content {
-  flex: 1;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  overflow-y: auto;
   padding: 1rem 0;
 }
 
@@ -100,6 +129,14 @@ header {
   gap: 10px;
 }
 
+#joker-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 10px;
+}
+
 .card {
   display: flex;
   justify-content: space-between;
@@ -110,6 +147,11 @@ header {
   border-radius: 10px;
   background-color: #f0f0f0;
   padding: 0% 8%;
+}
+
+#joker-row .card {
+  padding: 0;
+  justify-content: center;
 }
 
 .card:not(.card-discarded):hover {
@@ -125,6 +167,10 @@ header {
 .card span {
   font-size: 2rem;
   color: #000;
+}
+
+.card .red {
+  color: #be1931;
 }
 
 .card span.num-10 {
@@ -164,6 +210,31 @@ header {
   pointer-events: none;
 }
 
+.large-deck .card {
+  height: max(min(6vh, 48px), 32px);
+}
+
+.large-deck .card span {
+  font-size: 1.5rem;
+}
+
+.large-deck .card span.num-10 {
+  font-size: 1.3rem;
+}
+
+.large-deck .card img {
+  width: 35%;
+}
+
+.large-deck .column {
+  gap: 6px;
+}
+
+.large-deck #joker-row {
+  gap: 6px;
+  margin-top: 6px;
+}
+
 footer {
   display: flex;
   justify-content: center;
@@ -185,7 +256,9 @@ footer {
   font-weight: 600;
   margin: 5px;
   text-transform: uppercase;
-  transition: background-color 0.3s, transform 0.1s;
+  transition:
+    background-color 0.3s,
+    transform 0.1s;
 }
 
 @media screen and (min-height: 770px) {
@@ -216,4 +289,52 @@ footer {
 
 #discard-action-button:hover {
   background-color: #8f7f7f;
+}
+
+.title-controls {
+  display: flex;
+  align-items: center;
+}
+
+.deck-selector-compact {
+  position: relative;
+  display: inline-block;
+}
+
+#selected-deck-size {
+  background-color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 0.2rem 0.5rem;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  min-width: 2rem;
+  transition: background-color 0.2s;
+}
+
+#selected-deck-size:hover {
+  background-color: #e0e0e0;
+}
+
+#deck-size {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+@media screen and (min-width: 465px) {
+  #selected-deck-size {
+    font-size: 1rem;
+    padding: 0.3rem 0.8rem;
+  }
 }
