@@ -112,27 +112,32 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   flex: 1;
   overflow-y: auto;
-  padding: 1rem 0;
+  padding: 0.4rem 0;
 }
 
 #card-grid {
   display: flex;
-  justify-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 12px;
+  height: 100%;
+  max-height: 100%;
 }
 
 #card-grid .column {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   gap: 10px;
+  height: 100%;
 }
 
 #joker-row {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   width: 100%;
   margin-top: 10px;
 }
@@ -141,12 +146,13 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: max(min(22vw, 100px), 70px);
-  height: max(min(8vh, 60px), 40px);
-  border: 6px solid #000;
-  border-radius: 10px;
+  width: max(min(24vw, 125px), 78px);
+  height: max(min(13.2vh, 92px), 56px);
+  border: 5px solid #000;
+  border-radius: 12px;
   background-color: #f0f0f0;
   padding: 0% 8%;
+  flex-shrink: 0;
 }
 
 #joker-row .card {
@@ -155,7 +161,7 @@ footer {
 }
 
 .card:not(.card-discarded):hover {
-  transform: scale(1.05);
+  transform: scale(1.04);
   transition: transform 0.2s ease;
 }
 
@@ -165,7 +171,7 @@ footer {
 }
 
 .card span {
-  font-size: 2rem;
+  font-size: 2.1rem;
   color: #000;
 }
 
@@ -174,11 +180,11 @@ footer {
 }
 
 .card span.num-10 {
-  font-size: 1.7rem;
+  font-size: 1.8rem;
 }
 
 .card img {
-  width: 40%;
+  width: 42%;
   padding: 2px;
 }
 
@@ -201,38 +207,38 @@ footer {
 .card-selected::before {
   content: "";
   position: absolute;
-  top: -7px;
-  left: -7px;
-  right: -7px;
-  bottom: -7px;
-  border-radius: 10px;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 12px;
   border: 3px solid #00ffff;
   pointer-events: none;
 }
 
 .large-deck .card {
-  height: max(min(6vh, 48px), 32px);
+  height: max(min(8.5vh, 68px), 42px);
 }
 
 .large-deck .card span {
-  font-size: 1.5rem;
+  font-size: 1.65rem;
 }
 
 .large-deck .card span.num-10 {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 }
 
 .large-deck .card img {
-  width: 35%;
+  width: 38%;
 }
 
 .large-deck .column {
-  gap: 6px;
+  gap: 7px;
 }
 
 .large-deck #joker-row {
-  gap: 6px;
-  margin-top: 6px;
+  gap: 7px;
+  margin-top: 7px;
 }
 
 footer {
